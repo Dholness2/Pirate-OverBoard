@@ -1,0 +1,19 @@
+<%= flash[:notice] %>
+<%= flash[:error] %>
+
+<%= render partial: @question, locals: {question: @question}
+
+<h2>Answers: </h2>
+
+<% if @best_answer %>
+  <h4>Best Answer: </h4>
+  <%= render partial: 'answers/answer', locals: {answer: @best_answer} %>
+<% end %>
+
+<% if answers %>
+  <% answers.each do |answer| %>
+    <%= render partial: 'answers/answer', locals: {answer: answer} %>
+  <% end %>
+<% end %>
+
+<div><%= link_to 'All Questions', questions_path %></div>
